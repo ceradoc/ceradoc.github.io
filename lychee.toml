@@ -6,8 +6,9 @@ max_cache_age = "1d"
 
 include_verbatim = true
 
-# The docs subpath is deployed separately; it is not part of this site yet.
+# The docs subpath is deployed separately (monorepo Pages project);
+# lychee runners intermittently see transient 404s on it.
 exclude = [
-  "https://www\\.coridoc\\.org",
+  "^https://www\\.coridoc\\.org",
   "^mailto:",
 ]

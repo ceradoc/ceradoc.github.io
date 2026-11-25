@@ -47,4 +47,4 @@ The legacy `coradoc*` gems on RubyGems are frozen; new work happens under the
 
 - Monorepo: [github.com/coridoc/coridoc](https://github.com/coridoc/coridoc)
 - Documentation: [www.coridoc.org/coridoc/](https://www.coridoc.org/coridoc/)
-- Gems: [rubygems.org/orgs/coridoc](https://rubygems.org/orgs/coridoc)
+- Gems: [rubygems.org/gems/coridoc](https://rubygems.org/gems/coridoc)
