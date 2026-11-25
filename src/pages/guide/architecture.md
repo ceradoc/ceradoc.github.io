@@ -1,58 +1,51 @@
 ---
 layout: ../../layouts/Markdown.astro
-title: Hub-and-spoke architecture
-description: How Ceradoc routes every conversion through the canonical CoreModel with bidirectional ToCoreModel/FromCoreModel transformers.
+title: Architecture
+description: Hub and spokes, compiled grammars, and the bidirectional translation pairs.
 ---
 
-# Hub-and-spoke architecture
+# Architecture
 
-Ceradoc is a **hub-and-spoke** library. Every format is a spoke; the canonical
-**CoreModel** is the hub. Documents never translate spoke-to-spoke — they
-always pass through the hub.
+Ceradoc is a hub-and-spoke library. Everything routes through the CoreModel;
+nothing talks from format to format directly.
 
-## The transformation flow
+## The three stages
 
-```
-Source text → Parser → Format model → ToCoreModel → CoreModel
-                                                       │
-Target text ← Serializer ← Target model ← FromCoreModel
-```
+1. **Serialization syntax** — the grammar of each format lives in a single
+   `.parg` source, compiled by [parsanol](https://rubygems.org/gems/parsanol)
+   into a sealed artifact. The grammar source is the only source of truth.
+2. **Serialization model** — each format has its own typed model classes
+   (AsciiDoc's document model, Markdown's document model), generated and
+   checked against the grammar.
+3. **The CoreModel** — the harmonized hub. Every format translates into it
+   on the way in and out of it on the way back.
 
-- **Parse** — a format-specific parser (a PARG grammar for AsciiDoc and
-  Markdown) reads source text into that format's own model.
-- **ToCoreModel** — a transformer maps the format model into the canonical
-  CoreModel.
-- **FromCoreModel** — a transformer rebuilds a target format model from the
-  CoreModel.
-- **Serialize** — a serializer writes the target model back out as text.
+## Bidirectional pairs
 
-Because both directions exist for every format, conversion is **bidirectional**:
-`asciidoc → CoreModel → markdown` and `markdown → CoreModel → asciidoc` are the
-same machinery in different order.
+Each front-end ships two transformers that are equally load-bearing:
 
-## The CoreModel
+- `ToCoreModel` — parse direction: format model to CoreModel.
+- `FromCoreModel` — rebuild direction: CoreModel to format model.
 
-The CoreModel is the canonical document representation: structural elements,
-blocks, lists, tables, images, inline content, metadata, footnotes and
-bibliography. It is strongly typed — every attribute is a typed model, and no
-format-specific concepts leak into the hub.
+One-aspect lossiness is not accepted as one-directionality: the CoreModel
+carries what round trips need — authored IDs, nested lists, include edges,
+document attributes, emphasis constraint — so the rebuild is the document.
 
-## The spokes
+## Why compiled grammars
 
-| Gem | Role |
-|--------------------|--------------------------------------------|
-| [ceradoc](https://rubygems.org/gems/ceradoc) | CoreModel hub |
-| [ceradoc-adoc](https://rubygems.org/gems/ceradoc-adoc) | AsciiDoc front (parser + model + serializer + transformers) |
-| [ceradoc-markdown](https://rubygems.org/gems/ceradoc-markdown) | Markdown front |
-| [ceradoc-html](https://rubygems.org/gems/ceradoc-html) | HTML renderer |
-| [ceradoc-docx](https://rubygems.org/gems/ceradoc-docx) | DOCX renderer |
-| [ceradoc-mirror](https://rubygems.org/gems/ceradoc-mirror) | ProseMirror-compatible JSON document model |
+The parsers do not hand-walk text. Each `.parg` grammar compiles to a
+checksum-sealed artifact and runs on a native engine, with a Ruby engine as
+parity reference. Differential specs hold both engines to identical output,
+and grammar-level parity specs cover a standing corpus.
+
+## The harness
+
+The round-trip property harness runs a real corpus — fixtures, generated
+edge cases, and a full ISO standard document — on every change. It enforces
+serialization idempotence and catalogues known divergences that may only
+shrink. See [the round-trip guarantee](/guide/round-trip).
 
 ## Adding a format
 
-A new format is a new spoke: implement a parser with a **ToCoreModel**
-transformer (ingress) and a model with a **FromCoreModel** transformer plus a
-serializer (egress), then register it with the hub. No existing spoke changes —
-once registered, the new format converts to and from every other format.
-
-See [getting started](/guide/getting-started) to try it from the command line.
+A new format is two transformers (`ToCoreModel`, `FromCoreModel`), a grammar,
+and a model set. No hub changes. That is the hub-and-spoke contract.

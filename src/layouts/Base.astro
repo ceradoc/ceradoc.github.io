@@ -8,8 +8,15 @@ interface Props {
 
 const {
   title,
-  description = "Ceradoc — a hub-and-spoke document transformation library. Parse AsciiDoc and Markdown, harmonize through a canonical CoreModel, render HTML, DOCX and more — bidirectionally.",
+  description = "Ceradoc — the seal of interoperable document information. Parse AsciiDoc and Markdown, harmonize through a canonical CoreModel, and press faithful documents into any format.",
 } = Astro.props;
+
+const links = [
+  { href: "/guide/getting-started", label: "Get started" },
+  { href: "/guide/", label: "Documentation" },
+  { href: "/blog/", label: "Blog" },
+  { href: "/about", label: "About" },
+];
 ---
 
 <!doctype html>
@@ -20,20 +27,27 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#0b0e14" />
+    <meta name="theme-color" content="#181310" />
   </head>
   <body class="bg-night text-ink antialiased">
-    <header class="sticky top-0 z-40 border-b border-line bg-night/80 backdrop-blur">
+    <header class="sticky top-0 z-40 border-b border-line bg-night/85 backdrop-blur">
       <nav class="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
-        <a href="/" class="text-lg font-bold tracking-tight">
-          Cori<span class="text-heart">doc</span>
+        <a href="/" class="flex items-center gap-2" aria-label="Ceradoc home">
+          <svg viewBox="0 0 32 32" class="h-6 w-6" aria-hidden="true">
+            <circle cx="16" cy="16" r="14" fill="#a83226" />
+            <circle cx="16" cy="16" r="11" fill="none" stroke="#ede3d0" stroke-width="1.4" stroke-dasharray="2.5 2" />
+            <text x="16" y="21.5" text-anchor="middle" font-family="Georgia, serif" font-weight="bold" font-size="15" fill="#ede3d0">C</text>
+          </svg>
+          <span class="font-display text-lg font-black tracking-tight">Cera<span class="text-wax">doc</span></span>
         </a>
         <div class="flex items-center gap-6 text-sm">
-          <a href="/guide/getting-started" class="text-dim hover:text-ink">Guide</a>
-          <a href="/guide/architecture" class="text-dim hover:text-ink">Architecture</a>
-          <a href="/blog/" class="text-dim hover:text-ink">Blog</a>
-          <a href="/about" class="text-dim hover:text-ink">About</a>
-          <a href="https://www.ceradoc.org/ceradoc/" class="text-dim hover:text-ink">Docs</a>
+          {
+            links.map((link) => (
+              <a href={link.href} class="text-dim hover:text-ink">
+                {link.label}
+              </a>
+            ))
+          }
           <a href="https://github.com/ceradoc/ceradoc" class="text-dim hover:text-ink">GitHub</a>
         </div>
       </nav>
@@ -42,16 +56,16 @@ const {
       <slot />
     </main>
     <footer class="mt-24 border-t border-line py-10 text-center text-sm text-dim">
-      <p>
-        <span class="font-bold text-ink">Cori<span class="text-heart">doc</span></span>
-        — the heart of interoperable documents
+      <p class="font-display text-base font-black text-ink">
+        Cera<span class="text-wax">doc</span>
+        <span class="ml-2 font-body text-sm font-normal text-dim">— the seal of interoperable document information</span>
       </p>
       <p class="mt-2">
-        <a href="https://github.com/ceradoc/ceradoc" class="text-flow hover:underline">Monorepo</a>
+        <a href="https://github.com/ceradoc/ceradoc" class="text-patina hover:underline">Monorepo</a>
         <span class="mx-2">·</span>
-        <a href="https://www.ceradoc.org/ceradoc/" class="text-flow hover:underline">Documentation</a>
+        <a href="https://www.ceradoc.org/ceradoc/" class="text-patina hover:underline">API documentation</a>
         <span class="mx-2">·</span>
-        <a href="https://rubygems.org/gems/ceradoc" class="text-flow hover:underline">RubyGems</a>
+        <a href="https://rubygems.org/gems/ceradoc" class="text-patina hover:underline">RubyGems</a>
         <span class="mx-2">·</span>
         MIT licensed
       </p>

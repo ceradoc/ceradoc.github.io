@@ -1,63 +1,64 @@
 ---
 layout: ../../layouts/Markdown.astro
 title: Getting started
-description: Install the Ceradoc gems and parse your first document into the CoreModel.
+description: Install the ceradoc gems, parse a document into the CoreModel, and press it into another format.
 ---
 
 # Getting started
 
-Ceradoc turns documents into a canonical **CoreModel** and back. This guide
-walks through installing the gems and running your first conversion.
+Ceradoc ships as small gems around one hub. The parser gems read documents
+into the CoreModel; the renderer gems press the CoreModel back out.
 
 ## Install
 
-The hub gem is pulled in automatically by the fronts and renderers. To work
-with AsciiDoc:
-
-```console
-$ gem install ceradoc-adoc
+```sh
+gem install ceradoc-adoc      # AsciiDoc front-end
+gem install ceradoc-markdown  # Markdown front-end
+gem install ceradoc-html      # HTML renderer
+gem install ceradoc-docx      # DOCX renderer
 ```
 
-To also render HTML and DOCX:
+The `ceradoc` gem itself carries the CoreModel and arrives as a dependency.
 
-```console
-$ gem install ceradoc-html ceradoc-docx
-```
-
-## Parse a document into the CoreModel
-
-The `ceradoc` CLI parses a source document into the canonical CoreModel:
-
-```console
-$ ceradoc parse document.adoc --to core
-```
-
-This produces the harmonized CoreModel representation of the document —
-sections, blocks, tables, lists, inline content, metadata — independent of the
-source format.
-
-## Render to another format
-
-Once a document is in the CoreModel, any registered renderer can consume it:
-
-```console
-$ ceradoc render document.adoc --to html
-```
-
-## Using the library from Ruby
-
-End-to-end conversion routes through the hub:
+## Parse into the CoreModel
 
 ```ruby
 require "ceradoc"
+require "ceradoc/adoc"
 
-core = Ceradoc.parse(text, format: :asciidoc)  # source -> CoreModel
-html = Ceradoc.serialize(core, to: :html)      # CoreModel -> target
+core = Ceradoc.parse_file("document.adoc", format: :asciidoc)
 ```
 
-## What next?
+The CoreModel is a typed tree: sections, blocks, inline elements, metadata —
+every construct a real object, not a hash bag. What the parser cannot seal,
+it rejects loudly.
 
-- [Hub-and-spoke architecture](/guide/architecture) — how parse → CoreModel →
-  render works, and what bidirectional ToCoreModel/FromCoreModel transformers
-  do.
-- [About Ceradoc](/about) — the name, the rename history, and the gem suite.
+## Inspect
+
+```ruby
+core.children.each do |node|
+  puts "#{node.class.name}: #{node.respond_to?(:title) ? node.title : node.flat_text[0, 60]}"
+end
+```
+
+## Press into another format
+
+```ruby
+html = Ceradoc.serialize(core, to: :html)  # requires ceradoc-html
+adoc = Ceradoc.serialize(core, to: :asciidoc)
+```
+
+Or from the command line:
+
+```sh
+ceradoc convert document.adoc -t html
+ceradoc convert document.adoc -t adoc   # byte-stable round trip
+```
+
+## What you get back
+
+The document arrives sealed: headings and authored IDs keep their names,
+links and emphasis keep their structure, and the round trip through the
+CoreModel is held byte-stable by the property harness. See
+[the round-trip guarantee](/guide/round-trip) for what that means and how it
+is enforced.
