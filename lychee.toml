@@ -1,0 +1,13 @@
+# Lychee Link Checker Configuration
+# Documentation: https://github.com/lycheeverse/lychee
+
+cache = true
+max_cache_age = "1d"
+
+include_verbatim = true
+
+# The docs subpath is deployed separately; it is not part of this site yet.
+exclude = [
+  "https://www\\.coridoc\\.org",
+  "^mailto:",
+]

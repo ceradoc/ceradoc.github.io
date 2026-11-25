@@ -1,0 +1,186 @@
+---
+import Base from "../layouts/Base.astro";
+import CopyCommand from "../components/CopyCommand.vue";
+
+const gems = [
+  {
+    name: "coridoc",
+    role: "CoreModel hub — the canonical document model every format passes through",
+  },
+  {
+    name: "coridoc-adoc",
+    role: "AsciiDoc front — parse to CoreModel, rebuild from CoreModel",
+  },
+  {
+    name: "coridoc-markdown",
+    role: "Markdown front — parse to CoreModel, rebuild from CoreModel",
+  },
+  {
+    name: "coridoc-html",
+    role: "HTML renderer — render the CoreModel to HTML",
+  },
+  {
+    name: "coridoc-docx",
+    role: "DOCX renderer — render the CoreModel to OOXML",
+  },
+  {
+    name: "coridoc-mirror",
+    role: "ProseMirror-compatible JSON document model",
+  },
+];
+---
+
+<Base title="Coridoc — the heart of interoperable documents">
+  <section class="mx-auto max-w-4xl px-6 py-20 text-center">
+    <h1
+      class="bg-gradient-to-r from-heart via-spark to-flow bg-clip-text text-5xl font-bold tracking-tight text-transparent md:text-7xl"
+    >
+      Coridoc
+    </h1>
+    <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-dim">
+      <span class="font-semibold text-ink">Cor</span> is Latin for
+      <i>heart</i>, <span class="font-semibold text-ink">I</span> is
+      <i>interoperable</i>, <span class="font-semibold text-ink">Doc</span> is
+      <i>document</i> — the heart of interoperable documents.
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      <a
+        href="/guide/getting-started"
+        class="rounded-lg bg-gradient-to-r from-heart to-spark px-6 py-3 font-semibold text-[#14100e] transition hover:brightness-110"
+      >
+        Get started
+      </a>
+      <a
+        href="https://github.com/coridoc/coridoc"
+        class="rounded-lg border border-line px-6 py-3 font-medium text-ink transition hover:border-dim"
+      >
+        Source on GitHub
+      </a>
+    </div>
+
+    <div class="mt-14 grid gap-4 text-left md:grid-cols-3">
+      <div class="rounded-xl border border-line bg-panel p-5">
+        <p class="text-2xl font-bold tracking-tight text-heart">Cor</p>
+        <p class="mt-1 text-sm leading-relaxed text-dim">
+          Latin — <i>the heart</i>. The canonical CoreModel every format passes
+          through.
+        </p>
+      </div>
+      <div class="rounded-xl border border-line bg-panel p-5">
+        <p class="text-2xl font-bold tracking-tight text-spark">I</p>
+        <p class="mt-1 text-sm leading-relaxed text-dim">
+          <i>Interoperable</i> — AsciiDoc, Markdown, HTML and DOCX translate
+          through one hub, bidirectionally.
+        </p>
+      </div>
+      <div class="rounded-xl border border-line bg-panel p-5">
+        <p class="text-2xl font-bold tracking-tight text-flow">Doc</p>
+        <p class="mt-1 text-sm leading-relaxed text-dim">
+          <i>Document</i> — semantically typed models and faithful
+          round-trips.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gems" class="mx-auto max-w-5xl px-6 py-12">
+    <h2 class="mb-2 text-2xl font-semibold tracking-tight">Gems</h2>
+    <p class="mb-6 text-dim">
+      A hub-and-spoke suite on RubyGems.org — install the fronts and renderers
+      you need; the hub ties them together.
+    </p>
+    <div class="overflow-x-auto rounded-xl border border-line bg-panel">
+      <table class="w-full min-w-[42rem] border-collapse text-left text-sm">
+        <thead>
+          <tr class="border-b border-line text-xs font-semibold uppercase tracking-wide text-dim">
+            <th class="px-4 py-3">Gem</th>
+            <th class="px-4 py-3">Role</th>
+            <th class="px-4 py-3">Release</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            gems.map((gem) => (
+              <tr class="border-b border-line last:border-b-0">
+                <td class="px-4 py-3">
+                  <a
+                    href={`https://rubygems.org/gems/${gem.name}`}
+                    class="font-mono text-flow hover:underline"
+                  >
+                    {gem.name}
+                  </a>
+                </td>
+                <td class="px-4 py-3 text-dim">{gem.role}</td>
+                <td class="px-4 py-3">
+                  <img
+                    src={`https://img.shields.io/gem/v/${gem.name}`}
+                    alt={`${gem.name} gem version`}
+                    loading="lazy"
+                  />
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="quickstart" class="mx-auto max-w-5xl px-6 py-12">
+    <h2 class="mb-2 text-2xl font-semibold tracking-tight">Quick start</h2>
+    <p class="mb-6 text-dim">
+      Install an AsciiDoc front and parse a document into the CoreModel.
+    </p>
+    <div class="flex flex-col gap-2 rounded-xl border border-line bg-panel p-5 font-mono text-sm">
+      <CopyCommand client:visible command="gem install coridoc-adoc" />
+      <CopyCommand client:visible command="coridoc parse document.adoc --to core" />
+    </div>
+  </section>
+
+  <section id="architecture" class="mx-auto max-w-5xl px-6 py-12">
+    <h2 class="mb-2 text-2xl font-semibold tracking-tight">
+      Hub-and-spoke architecture
+    </h2>
+    <p class="mb-6 text-dim">
+      Every format speaks to the hub — never to another spoke.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-3 rounded-xl border border-line bg-panel px-6 py-8 font-mono text-sm">
+      <span class="rounded-lg border border-line bg-night px-4 py-2">AsciiDoc</span>
+      <span class="text-dim">⇄</span>
+      <span class="rounded-lg border border-heart bg-night px-4 py-2 font-semibold text-spark">CoreModel</span>
+      <span class="text-dim">⇄</span>
+      <span class="rounded-lg border border-line bg-night px-4 py-2">Markdown</span>
+      <span class="text-dim">⇄</span>
+      <span class="rounded-lg border border-line bg-night px-4 py-2">HTML · DOCX</span>
+    </div>
+    <p class="mt-6 text-center text-dim">
+      Read more in
+      <a href="/guide/architecture" class="text-flow hover:underline"
+        >the architecture guide</a
+      >.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-6 py-12">
+    <div class="rounded-xl border border-[#3a2a33] bg-[#161320] p-6 text-sm leading-relaxed text-dim">
+      <p>
+        <span class="font-semibold text-ink">Renamed:</span> this project was
+        formerly <span class="font-semibold text-ink">Coradoc</span> at
+        <a
+          href="https://github.com/metanorma/coradoc"
+          class="text-flow hover:underline">metanorma/coradoc</a
+        >. It is now <span class="font-semibold text-ink">Coridoc</span>, living
+        at
+        <a href="https://github.com/coridoc/coridoc" class="text-flow hover:underline"
+          >github.com/coridoc/coridoc</a
+        >. Legacy <code class="rounded bg-night px-1.5 py-0.5 font-mono text-ink">coradoc*</code>
+        gems on RubyGems are frozen — use the
+        <code class="rounded bg-night px-1.5 py-0.5 font-mono text-ink">coridoc*</code>
+        gems above. Full documentation:
+        <a href="https://www.coridoc.org/coridoc/" class="text-flow hover:underline"
+          >www.coridoc.org/coridoc/</a
+        >.
+      </p>
+    </div>
+  </section>
+</Base>
