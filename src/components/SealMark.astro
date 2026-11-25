@@ -1,0 +1,38 @@
+---
+// The Ceradoc wax seal: a scalloped wax disc with an engraved ring and
+// the Cera monogram. `size` sets the rendered width in pixels.
+interface Props {
+  size?: number;
+  pressed?: boolean;
+}
+
+const { size = 160, pressed = false } = Astro.props;
+---
+
+<svg
+  viewBox="0 0 200 200"
+  width={size}
+  height={size}
+  class={pressed ? "seal-press" : ""}
+  role="img"
+  aria-label="The Ceradoc wax seal"
+>
+  <defs>
+    <radialGradient id="wax-body" cx="42%" cy="38%" r="75%">
+      <stop offset="0%" stop-color="#c04a38" />
+      <stop offset="55%" stop-color="#a83226" />
+      <stop offset="100%" stop-color="#7c231a" />
+    </radialGradient>
+    <filter id="wax-edge">
+      <feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="2" seed="7" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" />
+    </filter>
+  </defs>
+  <g filter="url(#wax-edge)">
+    <circle cx="100" cy="100" r="88" fill="url(#wax-body)" />
+    <circle cx="100" cy="100" r="74" fill="none" stroke="#5e160e" stroke-width="2" opacity="0.8" />
+    <circle cx="100" cy="100" r="66" fill="none" stroke="#ede3d0" stroke-width="1.6" stroke-dasharray="4 3" opacity="0.85" />
+    <text x="100" y="126" text-anchor="middle" font-family="Georgia, serif" font-size="72" font-weight="bold" fill="#ede3d0">C</text>
+    <text x="100" y="152" text-anchor="middle" font-family="Georgia, serif" font-size="13" letter-spacing="4" fill="#ede3d0" opacity="0.85">CERADOC</text>
+  </g>
+</svg>
