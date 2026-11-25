@@ -1,0 +1,20 @@
+---
+import Base from "./Base.astro";
+
+interface Props {
+  frontmatter: { title?: string; description?: string };
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<Base
+  title={frontmatter.title ? `${frontmatter.title} — Coridoc` : "Coridoc"}
+  description={frontmatter.description}
+>
+  <main class="mx-auto max-w-3xl px-6 py-12">
+    <article class="prose prose-invert prose-lg max-w-none">
+      <slot />
+    </article>
+  </main>
+</Base>

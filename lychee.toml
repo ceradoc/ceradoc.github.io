@@ -1,0 +1,14 @@
+# Lychee Link Checker Configuration
+# Documentation: https://github.com/lycheeverse/lychee
+
+cache = true
+max_cache_age = "1d"
+
+include_verbatim = true
+
+# The docs subpath is deployed separately (monorepo Pages project);
+# lychee runners intermittently see transient 404s on it.
+exclude = [
+  "^https://www\\.coridoc\\.org",
+  "^mailto:",
+]

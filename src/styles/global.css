@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-night: #0b0e14;
+  --color-panel: #141926;
+  --color-line: #232a3a;
+  --color-ink: #e8ecf4;
+  --color-dim: #8b95a8;
+  --color-heart: #e0524d;
+  --color-spark: #f2a541;
+  --color-flow: #5b8def;
+  --color-leaf: #3fb68b;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: var(--color-heart);
+  color: #14100e;
+}
+
+.prose :where(a):not(:where([class~="not-prose"] *)) {
+  color: var(--color-flow);
+}

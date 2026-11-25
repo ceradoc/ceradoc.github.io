@@ -1,0 +1,60 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Coridoc — a hub-and-spoke document transformation library. Parse AsciiDoc and Markdown, harmonize through a canonical CoreModel, render HTML, DOCX and more — bidirectionally.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="bg-night">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0b0e14" />
+  </head>
+  <body class="bg-night text-ink antialiased">
+    <header class="sticky top-0 z-40 border-b border-line bg-night/80 backdrop-blur">
+      <nav class="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
+        <a href="/" class="text-lg font-bold tracking-tight">
+          Cori<span class="text-heart">doc</span>
+        </a>
+        <div class="flex items-center gap-6 text-sm">
+          <a href="/guide/getting-started" class="text-dim hover:text-ink">Guide</a>
+          <a href="/guide/architecture" class="text-dim hover:text-ink">Architecture</a>
+          <a href="/blog/" class="text-dim hover:text-ink">Blog</a>
+          <a href="/about" class="text-dim hover:text-ink">About</a>
+          <a href="https://www.coridoc.org/coridoc/" class="text-dim hover:text-ink">Docs</a>
+          <a href="https://github.com/coridoc/coridoc" class="text-dim hover:text-ink">GitHub</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="mt-24 border-t border-line py-10 text-center text-sm text-dim">
+      <p>
+        <span class="font-bold text-ink">Cori<span class="text-heart">doc</span></span>
+        — the heart of interoperable documents
+      </p>
+      <p class="mt-2">
+        <a href="https://github.com/coridoc/coridoc" class="text-flow hover:underline">Monorepo</a>
+        <span class="mx-2">·</span>
+        <a href="https://www.coridoc.org/coridoc/" class="text-flow hover:underline">Documentation</a>
+        <span class="mx-2">·</span>
+        <a href="https://rubygems.org/gems/coridoc" class="text-flow hover:underline">RubyGems</a>
+        <span class="mx-2">·</span>
+        MIT licensed
+      </p>
+    </footer>
+  </body>
+</html>
