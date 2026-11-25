@@ -9,6 +9,6 @@ include_verbatim = true
 # The docs subpath is deployed separately (monorepo Pages project);
 # lychee runners intermittently see transient 404s on it.
 exclude = [
-  "^https://www\\.coridoc\\.org",
+  "^https://www\\.ceradoc\\.org",
   "^mailto:",
 ]

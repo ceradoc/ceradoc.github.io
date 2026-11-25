@@ -1,7 +1,7 @@
 {
-  "name": "coridoc.github.io",
+  "name": "ceradoc.github.io",
   "version": "1.0.0",
-  "description": "Coridoc — the heart of interoperable documents",
+  "description": "Ceradoc — the heart of interoperable documents",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
