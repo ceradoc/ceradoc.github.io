@@ -5,5 +5,5 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   integrations: [vue()],
   vite: { plugins: [tailwindcss()] },
-  site: "https://www.coridoc.org",
+  site: "https://www.ceradoc.org",
 });

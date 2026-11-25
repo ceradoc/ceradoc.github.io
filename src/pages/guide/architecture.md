@@ -1,12 +1,12 @@
 ---
 layout: ../../layouts/Markdown.astro
 title: Hub-and-spoke architecture
-description: How Coridoc routes every conversion through the canonical CoreModel with bidirectional ToCoreModel/FromCoreModel transformers.
+description: How Ceradoc routes every conversion through the canonical CoreModel with bidirectional ToCoreModel/FromCoreModel transformers.
 ---
 
 # Hub-and-spoke architecture
 
-Coridoc is a **hub-and-spoke** library. Every format is a spoke; the canonical
+Ceradoc is a **hub-and-spoke** library. Every format is a spoke; the canonical
 **CoreModel** is the hub. Documents never translate spoke-to-spoke — they
 always pass through the hub.
 
@@ -41,12 +41,12 @@ format-specific concepts leak into the hub.
 
 | Gem | Role |
 |--------------------|--------------------------------------------|
-| [coridoc](https://rubygems.org/gems/coridoc) | CoreModel hub |
-| [coridoc-adoc](https://rubygems.org/gems/coridoc-adoc) | AsciiDoc front (parser + model + serializer + transformers) |
-| [coridoc-markdown](https://rubygems.org/gems/coridoc-markdown) | Markdown front |
-| [coridoc-html](https://rubygems.org/gems/coridoc-html) | HTML renderer |
-| [coridoc-docx](https://rubygems.org/gems/coridoc-docx) | DOCX renderer |
-| [coridoc-mirror](https://rubygems.org/gems/coridoc-mirror) | ProseMirror-compatible JSON document model |
+| [ceradoc](https://rubygems.org/gems/ceradoc) | CoreModel hub |
+| [ceradoc-adoc](https://rubygems.org/gems/ceradoc-adoc) | AsciiDoc front (parser + model + serializer + transformers) |
+| [ceradoc-markdown](https://rubygems.org/gems/ceradoc-markdown) | Markdown front |
+| [ceradoc-html](https://rubygems.org/gems/ceradoc-html) | HTML renderer |
+| [ceradoc-docx](https://rubygems.org/gems/ceradoc-docx) | DOCX renderer |
+| [ceradoc-mirror](https://rubygems.org/gems/ceradoc-mirror) | ProseMirror-compatible JSON document model |
 
 ## Adding a format
 

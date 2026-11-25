@@ -7,7 +7,7 @@
   --color-line: #232a3a;
   --color-ink: #e8ecf4;
   --color-dim: #8b95a8;
-  --color-heart: #e0524d;
+  --color-seal: #e0524d;
   --color-spark: #f2a541;
   --color-flow: #5b8def;
   --color-leaf: #3fb68b;
@@ -18,7 +18,7 @@ html {
 }
 
 ::selection {
-  background-color: var(--color-heart);
+  background-color: var(--color-seal);
   color: #14100e;
 }
 

@@ -1,50 +1,51 @@
 ---
 layout: ../layouts/Markdown.astro
 title: About
-description: Coridoc — the heart of interoperable documents. Formerly Coradoc.
+description: Ceradoc — the seal of interoperable document information. Formerly Coridoc.
 ---
 
-# About Coridoc
+# About Ceradoc
 
-**Coridoc** is a hub-and-spoke document transformation library. Documents are
+**Ceradoc** is a hub-and-spoke document transformation library. Documents are
 parsed into a canonical **CoreModel**, and every supported format talks to that
 hub — never to another format directly. Add a new format, and it converts to
 and from all the others for free.
 
 ## The name
 
-**Coridoc** = **Cor** + **I** + **Doc**:
+**Ceradoc** = **Cera** + **Doc**:
 
-- **Cor** — Latin for *heart*. The CoreModel is the heart every document beats
-  through.
-- **I** — *interoperable*. Formats interoperate bidirectionally through the
-  hub.
-- **Doc** — *document*. The subject matter: semantically typed, faithful
-  documents.
+- **Cera** — Latin for *wax*. For two thousand years a document's authority
+  traveled under a seal pressed into wax: identity, integrity, origin —
+  tamper-evident and permanent.
+- **Doc** — *document*. The subject matter: semantically typed, faithful,
+  interoperable documents.
 
-Together: **the heart of interoperable documents**.
+Together: **the seal of interoperable document information**. Press the
+canonical CoreModel into any format and the document arrives sealed —
+faithful, verifiable, round-trip-intact.
 
-## Formerly Coradoc
+## Formerly Coradoc, then Coridoc
 
-The project was formerly named **Coradoc** and lived at
-[metanorma/coradoc](https://github.com/metanorma/coradoc). It is now **Coridoc**
-and lives at [github.com/coridoc/coridoc](https://github.com/coridoc/coridoc).
+The project was formerly named **Coradoc**, then **Coridoc**. It started at
+[metanorma/coradoc](https://github.com/metanorma/coradoc). It is now **Ceradoc**
+and lives at [github.com/ceradoc/ceradoc](https://github.com/ceradoc/ceradoc).
 The legacy `coradoc*` gems on RubyGems are frozen; new work happens under the
-`coridoc*` names.
+`ceradoc*` names.
 
 ## The gem suite
 
 | Gem | Role |
 |-----------|---------------------------------------------|
-| [coridoc](https://rubygems.org/gems/coridoc) | CoreModel hub |
-| [coridoc-adoc](https://rubygems.org/gems/coridoc-adoc) | AsciiDoc front |
-| [coridoc-markdown](https://rubygems.org/gems/coridoc-markdown) | Markdown front |
-| [coridoc-html](https://rubygems.org/gems/coridoc-html) | HTML renderer |
-| [coridoc-docx](https://rubygems.org/gems/coridoc-docx) | DOCX renderer |
-| [coridoc-mirror](https://rubygems.org/gems/coridoc-mirror) | ProseMirror JSON model |
+| [ceradoc](https://rubygems.org/gems/ceradoc) | CoreModel hub |
+| [ceradoc-adoc](https://rubygems.org/gems/ceradoc-adoc) | AsciiDoc front |
+| [ceradoc-markdown](https://rubygems.org/gems/ceradoc-markdown) | Markdown front |
+| [ceradoc-html](https://rubygems.org/gems/ceradoc-html) | HTML renderer |
+| [ceradoc-docx](https://rubygems.org/gems/ceradoc-docx) | DOCX renderer |
+| [ceradoc-mirror](https://rubygems.org/gems/ceradoc-mirror) | ProseMirror JSON model |
 
 ## Links
 
-- Monorepo: [github.com/coridoc/coridoc](https://github.com/coridoc/coridoc)
-- Documentation: [www.coridoc.org/coridoc/](https://www.coridoc.org/coridoc/)
-- Gems: [rubygems.org/gems/coridoc](https://rubygems.org/gems/coridoc)
+- Monorepo: [github.com/ceradoc/ceradoc](https://github.com/ceradoc/ceradoc)
+- Documentation: [www.ceradoc.org/ceradoc/](https://www.ceradoc.org/ceradoc/)
+- Gems: [rubygems.org/gems/ceradoc](https://rubygems.org/gems/ceradoc)

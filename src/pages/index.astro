@@ -4,54 +4,54 @@ import CopyCommand from "../components/CopyCommand.vue";
 
 const gems = [
   {
-    name: "coridoc",
+    name: "ceradoc",
     role: "CoreModel hub — the canonical document model every format passes through",
   },
   {
-    name: "coridoc-adoc",
+    name: "ceradoc-adoc",
     role: "AsciiDoc front — parse to CoreModel, rebuild from CoreModel",
   },
   {
-    name: "coridoc-markdown",
+    name: "ceradoc-markdown",
     role: "Markdown front — parse to CoreModel, rebuild from CoreModel",
   },
   {
-    name: "coridoc-html",
+    name: "ceradoc-html",
     role: "HTML renderer — render the CoreModel to HTML",
   },
   {
-    name: "coridoc-docx",
+    name: "ceradoc-docx",
     role: "DOCX renderer — render the CoreModel to OOXML",
   },
   {
-    name: "coridoc-mirror",
+    name: "ceradoc-mirror",
     role: "ProseMirror-compatible JSON document model",
   },
 ];
 ---
 
-<Base title="Coridoc — the heart of interoperable documents">
+<Base title="Ceradoc — the seal of interoperable document information">
   <section class="mx-auto max-w-4xl px-6 py-20 text-center">
     <h1
-      class="bg-gradient-to-r from-heart via-spark to-flow bg-clip-text text-5xl font-bold tracking-tight text-transparent md:text-7xl"
+      class="bg-gradient-to-r from-seal via-spark to-flow bg-clip-text text-5xl font-bold tracking-tight text-transparent md:text-7xl"
     >
-      Coridoc
+      Ceradoc
     </h1>
     <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-dim">
-      <span class="font-semibold text-ink">Cor</span> is Latin for
-      <i>heart</i>, <span class="font-semibold text-ink">I</span> is
-      <i>interoperable</i>, <span class="font-semibold text-ink">Doc</span> is
-      <i>document</i> — the heart of interoperable documents.
+      <span class="font-semibold text-ink">Cera</span> is Latin for
+      <i>wax</i> — the sealing wax pressed into documents to mark them
+      authentic — and <span class="font-semibold text-ink">Doc</span> is
+      <i>document</i>: the seal of interoperable document information.
     </p>
     <div class="mt-8 flex flex-wrap justify-center gap-4">
       <a
         href="/guide/getting-started"
-        class="rounded-lg bg-gradient-to-r from-heart to-spark px-6 py-3 font-semibold text-[#14100e] transition hover:brightness-110"
+        class="rounded-lg bg-gradient-to-r from-seal to-spark px-6 py-3 font-semibold text-[#14100e] transition hover:brightness-110"
       >
         Get started
       </a>
       <a
-        href="https://github.com/coridoc/coridoc"
+        href="https://github.com/ceradoc/ceradoc"
         class="rounded-lg border border-line px-6 py-3 font-medium text-ink transition hover:border-dim"
       >
         Source on GitHub
@@ -60,10 +60,10 @@ const gems = [
 
     <div class="mt-14 grid gap-4 text-left md:grid-cols-3">
       <div class="rounded-xl border border-line bg-panel p-5">
-        <p class="text-2xl font-bold tracking-tight text-heart">Cor</p>
+        <p class="text-2xl font-bold tracking-tight text-seal">Cera</p>
         <p class="mt-1 text-sm leading-relaxed text-dim">
-          Latin — <i>the heart</i>. The canonical CoreModel every format passes
-          through.
+          Latin — <i>the sealing wax</i>. Pressed once, a document stays
+          authentic wherever it travels.
         </p>
       </div>
       <div class="rounded-xl border border-line bg-panel p-5">
@@ -132,8 +132,8 @@ const gems = [
       Install an AsciiDoc front and parse a document into the CoreModel.
     </p>
     <div class="flex flex-col gap-2 rounded-xl border border-line bg-panel p-5 font-mono text-sm">
-      <CopyCommand client:visible command="gem install coridoc-adoc" />
-      <CopyCommand client:visible command="coridoc parse document.adoc --to core" />
+      <CopyCommand client:visible command="gem install ceradoc-adoc" />
+      <CopyCommand client:visible command="ceradoc parse document.adoc --to core" />
     </div>
   </section>
 
@@ -147,7 +147,7 @@ const gems = [
     <div class="flex flex-wrap items-center justify-center gap-3 rounded-xl border border-line bg-panel px-6 py-8 font-mono text-sm">
       <span class="rounded-lg border border-line bg-night px-4 py-2">AsciiDoc</span>
       <span class="text-dim">⇄</span>
-      <span class="rounded-lg border border-heart bg-night px-4 py-2 font-semibold text-spark">CoreModel</span>
+      <span class="rounded-lg border border-seal bg-night px-4 py-2 font-semibold text-spark">CoreModel</span>
       <span class="text-dim">⇄</span>
       <span class="rounded-lg border border-line bg-night px-4 py-2">Markdown</span>
       <span class="text-dim">⇄</span>
@@ -169,16 +169,16 @@ const gems = [
         <a
           href="https://github.com/metanorma/coradoc"
           class="text-flow hover:underline">metanorma/coradoc</a
-        >. It is now <span class="font-semibold text-ink">Coridoc</span>, living
+        >. It is now <span class="font-semibold text-ink">Ceradoc</span>, living
         at
-        <a href="https://github.com/coridoc/coridoc" class="text-flow hover:underline"
-          >github.com/coridoc/coridoc</a
+        <a href="https://github.com/ceradoc/ceradoc" class="text-flow hover:underline"
+          >github.com/ceradoc/ceradoc</a
         >. Legacy <code class="rounded bg-night px-1.5 py-0.5 font-mono text-ink">coradoc*</code>
         gems on RubyGems are frozen — use the
-        <code class="rounded bg-night px-1.5 py-0.5 font-mono text-ink">coridoc*</code>
+        <code class="rounded bg-night px-1.5 py-0.5 font-mono text-ink">ceradoc*</code>
         gems above. Full documentation:
-        <a href="https://www.coridoc.org/coridoc/" class="text-flow hover:underline"
-          >www.coridoc.org/coridoc/</a
+        <a href="https://www.ceradoc.org/ceradoc/" class="text-flow hover:underline"
+          >www.ceradoc.org/ceradoc/</a
         >.
       </p>
     </div>
